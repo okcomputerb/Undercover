@@ -1,0 +1,16 @@
+node_modules
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+.package-lock.json
+
+#idea
+.iml
+modules.xml
+
+# Hardhat files
+cache
+artifacts
+
