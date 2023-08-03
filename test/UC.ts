@@ -1,6 +1,5 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
-import { Contract } from 'ethers';
 import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { merkelRootArray } from '../scripts/merkel-root';
 import { obtainProof } from '../scripts/obtain-proof';
@@ -43,7 +42,7 @@ describe("Undercover Contract", function () {
         });
 
         it("Should set the right root", async function () {
-            const { undercover, uc, root } = await loadFixture(deployUCFixture);
+            const { undercover, root } = await loadFixture(deployUCFixture);
 
             expect(await undercover.merkleRoot()).to.equal(root);
             // expect(await undercover.token()).to.equal(uc.getAddress());
@@ -54,7 +53,7 @@ describe("Undercover Contract", function () {
     describe("Claim function", function () {
         it("Should claim tokens", async function () {
 
-            const { undercover, addr1, addrArray, uc, root } = await loadFixture(deployUCFixture);
+            const { undercover, addr1,  uc } = await loadFixture(deployUCFixture);
 
 
             const proofOfAddr1 = await obtainProof(addr1.address);
